@@ -17,9 +17,9 @@ app.use(express.json());
 // 1. CONFIGURACIÓN DE BASE DE DATOS (MYSQL)
 // ----------------------------------------------------------------
 const db = mysql.createConnection({
-    host: 'localhost', 
-    user: 'root', // CONFIRMAR CREDENCIALES
-    password: 'Javier14Lobo', // CONFIRMAR CREDENCIALES
+    host: process.env.DB_HOST, 
+    user: process.env.DB_USER, // CONFIRMAR CREDENCIALES
+    password: process.env.DB_PASSWORD, // CONFIRMAR CREDENCIALES
     database: 'brightgroup_db' 
 });
 
@@ -51,8 +51,8 @@ db.connect(err => {
 const transporter = nodemailer.createTransport({
     service: 'Gmail', 
     auth: {
-        user: 'rjcp1420l@gmail.com',
-        pass: 'sxsu ldfn llpk pjxj' // ⚠️ USA UNA CONTRASEÑA DE APLICACIÓN DE GOOGLE
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS // ⚠️ USA UNA CONTRASEÑA DE APLICACIÓN DE GOOGLE
     }
 });
 
